@@ -14,12 +14,13 @@ docker pull
 ```
 
 ## 参赛规范 <br/>
-1) 工程开发目录需要在/workspace/I2VModelAcceleration/目录下, 启动脚本固定使用run.sh, 提交镜像中需使用baseline中的evaluate.py, evaluate.py需保持和baseline一致, 测试数据目录结构保持与baseline一致. <br/>
-2) 提交方案中请合理安排日志打印输出内容.<br/>
+1) 工程开发目录需要在/workspace/I2VModelAcceleration/目录下, 启动脚本固定使用run.sh, 提交镜像中需使用baseline中的evaluate.py和generate_videos.py, 需保持和baseline一致, 测试数据目录结构保持与baseline一致. <br/>
+2) 上传镜像中请勿上传测试数据，和baseline中I2V.py涉及模型，若使用其他模型目录名，请勿与原I2V.py同路径.<br/>
 3) 平台提供了基于镜像地址提交镜像的方式, 将本地镜像推送至阿里云容器镜像仓库或者Dockerhub后, 设置为公开镜像, 在比赛平台提交页面中输入镜像地址. 由比赛平台拉取镜像运行, 运行结束即可在成绩页面查询评测结果. 推送至阿里云容器镜像仓库或者Dockerhub时, 镜像仓库名称尽量不关联上比赛相关的词语, 以免被检索从而泄漏.<br/>
 4) 运行镜像时，容器内任何网络不可用，请将依赖的软件、包在镜像中装好. <br/>
 5) 为了合理分配资源，平均单视频生成时间不超过10分钟，超出后程序自动停止，结果将不被接受.<br/>
-6) Docker镜像大小请尽量勿超过16G, 上传镜像中请勿包含数据集.<br/>
+6) Docker镜像大小请尽量勿超过25G, 推荐使用示例镜像，或者pytorch/pytorch:2.x.x-cuda1x.x-cudnn8-devel系列镜像.<br/>
+7) 请勿生成静态或者趋于静态的视频，否则成绩则无效.<br/>
 <br/>
 
 ## 资源配置：<br/>
