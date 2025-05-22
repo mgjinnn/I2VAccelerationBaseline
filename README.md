@@ -10,7 +10,7 @@ bash run.sh
 docker: <br/>
 Driver Version: 560.35.03<br/>
 ```bash
-docker pull 
+docker pull registry.cn-hangzhou.aliyuncs.com/clg_test/ai:1.0
 ```
 
 ## 参赛规范 <br/>
@@ -21,6 +21,7 @@ docker pull
 5) 为了合理分配资源，平均单视频生成时间不超过10分钟，超出后程序自动停止，结果将不被接受.<br/>
 6) Docker镜像大小请尽量勿超过25G, 推荐使用示例镜像，或者pytorch/pytorch:2.x.x-cuda1x.x-cudnn8-devel系列镜像.<br/>
 7) 请勿生成静态或者趋于静态的视频，否则成绩则无效.<br/>
+8) 数据格式请参考baseline中数据，生成视频时请使用固定生成种子42.<br/>
 <br/>
 
 ## 资源配置：<br/>
@@ -41,4 +42,8 @@ $ docker push registry.cn-hangzhou.aliyuncs.com/xx1/xx2:[镜像版本号]
 请根据实际镜像信息替换示例中的[阿里云id], [ImageId]和[镜像版本号]参数.
 ```
 5) 在比赛提交页面提交: registry.cn-hangzhou.aliyuncs.com/xx1/xx2:[镜像版本号].
+<br/>
+
+## Reference <br/>
+This baseline is mainly inspired by [DiffSynth-Studio](https://github.com/modelscope/DiffSynth-Studio/tree/main/examples/wanvideo) and [VBench](https://github.com/Vchitect/VBench/tree/master/vbench2_beta_i2v).
 <br/>
