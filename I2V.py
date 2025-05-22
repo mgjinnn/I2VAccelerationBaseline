@@ -29,13 +29,13 @@ class I2VMethod:
         self.pipe = WanVideoPipeline.from_model_manager(model_manager, torch_dtype=torch.bfloat16, device="cuda")
         self.pipe.enable_vram_management(num_persistent_param_in_dit=None)
     
-    def run_generation(self, prompt, input_image):
+    def run_generation(self, prompt, input_image, seed):
         # 生成视频
         video = self.pipe(
             prompt=prompt,
             num_inference_steps=40,
             input_image=input_image,
-            seed=42, 
+            seed=seed, 
             tiled=True, height=832, width=464,
             tea_cache_l1_thresh=0.4,
             tea_cache_model_id="Wan2.1-I2V-14B-480P"

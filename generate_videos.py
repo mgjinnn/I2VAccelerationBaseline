@@ -1,5 +1,6 @@
 import csv
 import os
+import pandas as pd
 import time
 import torch
 
@@ -9,7 +10,7 @@ from PIL import Image
 from I2V import I2VMethod
 
 
-def generate(prompts, video_names, img_names):
+def generate(prompts, video_names, img_names, seeds):
     i2v_generator = I2VMethod()
 
     # 初始化日志文件
@@ -26,6 +27,7 @@ def generate(prompts, video_names, img_names):
         prompt = prompts[i]
         video_name = video_names[i]
         img_name = img_names[i]
+        seed = seeds[i]
 
         # 加载对应的图片
         img_path = os.path.join("data/Test/imgs", img_name)
@@ -39,7 +41,7 @@ def generate(prompts, video_names, img_names):
         start_time = time.time()
 
         # 生成视频
-        video = i2v_generator.run_generation(prompt, input_image)
+        video = i2v_generator.run_generation(prompt, input_image, seed)
 
         # 记录结束时间
         end_time = time.time()
@@ -60,29 +62,29 @@ def generate(prompts, video_names, img_names):
 
 if __name__ == "__main__":    
     ts = time.time()
-    # CSV 文件路径
+    # 数据描述文件路径
     csv_file_path = 'data/Test/datasets.csv'
+    df = pd.read_csv(csv_file_path)
     
-    # 初始化列表以存储从CSV中读取的数据
     prompts = []
     video_names = []
     img_names = []
+    seeds = []
 
     # 读取CSV文件
-    with open(csv_file_path, 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            prompt = row.get('prompt', '').strip()
-            video_name = row.get('video_name', '').strip()
-            img_name = row.get('img_name', '').strip()
+    for _, row in df.iterrows():
+        prompt = str(row.get('prompt', '')).strip()
+        video_name = str(row.get('video_name', '')).strip()
+        img_name = str(row.get('img_name', '')).strip()
+        seed = str(row.get('seed', '')).strip()
 
-            if prompt and video_name and img_name:
-                prompts.append(prompt)
-                video_names.append(video_name)
-                img_names.append(img_name)
+        if prompt and video_name and img_name and seed:
+            prompts.append(prompt)
+            video_names.append(video_name)
+            img_names.append(img_name)
+            seeds.append(int(seed))
 
     # 生成视频
-    generate(prompts, video_names, img_names)
+    generate(prompts, video_names, img_names, seeds)
     te = time.time()
     print(f"生成 {len(prompts)} 个视频耗时 {te - ts} 秒。")
-    # 生成 5 个视频耗时 1245.399322271347 秒。
