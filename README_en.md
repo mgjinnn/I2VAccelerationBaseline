@@ -16,7 +16,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/clg_test/ai:1.0
 ## Challenge Specifications<br/>
 ## Contest Rules
 1) The project development directory must be located in the /workspace/I2VModelAcceleration/ directory. The startup script should be named run.sh. In the submitted image, use evaluate.py and generate_videos.py from the baseline, maintaining consistency with the baseline. The test data directory structure should also match the baseline.<br/>
-2) Do not include test data in the uploaded image. Avoid uploading models related to I2V.py in the baseline. If other models are used, their directory names should not be in the same path as the original I2V.py.<br/>
+2) Do not include test data in the uploaded image, nor the models involved in baseline/I2V.py and those required for VBench evaluation. If other models are used, place them in a different path than the original models in I2V.py.<br/>
 3) The platform allows submitting images via image addresses. Push your local image to Alibaba Cloud Container Registry or Dockerhub, set it as a public image, and enter the image address on the competition platform's submission page. The platform will pull and run the image, and results can be checked on the results page after execution. When pushing to Alibaba Cloud Container Registry or Dockerhub, avoid using competition - related terms in the image repository name to prevent leakage.<br/>
 4) No network access is available within the container when running the image. Install all dependent software and packages in the image.<br/>
 5) To allocate resources fairly, the average generation time per video should not exceed 10 minutes. Exceeding this limit will automatically stop the program, and results will not be accepted.<br/>
