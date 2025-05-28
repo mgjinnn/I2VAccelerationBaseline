@@ -20,7 +20,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/clg_test/ai:1.0
 4) 运行镜像时，容器内任何网络不可用，请将依赖的软件、包在镜像中装好. <br/>
 5) 为了合理分配资源，平均单视频生成时间不超过10分钟，超出后程序自动停止，结果将不被接受.<br/>
 6) Docker镜像大小请尽量勿超过25G, 推荐使用示例镜像，或者pytorch/pytorch:2.x.x-cuda1x.x-cudnn8-devel系列镜像.<br/>
-7) 请勿生成静态或者趋于静态的视频，否则成绩则无效.<br/>
+7) 请勿生成静态或者趋于静态的视频，否则成绩则无效, dynamic degree 分数小于0.5成绩无效，小于0.75方案最终会增加人审.<br/>
 8) 数据格式请参考baseline中数据，生成视频时请使用固定生成种子42.<br/>
 <br/>
 
