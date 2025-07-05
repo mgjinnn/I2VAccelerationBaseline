@@ -22,7 +22,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/clg_test/ai:1.0
 5) To allocate resources fairly, the average generation time per video should not exceed 10 minutes. Exceeding this limit will automatically stop the program, and results will not be accepted.<br/>
 6) Try to keep the Docker image size under 25G. It is recommended to use example images or images from the pytorch/pytorch:2.x.x-cuda1x.x-cudnn8-devel series.<br/>
 7) Do not generate static or near - static videos, as this will invalidate your results. If the dynamic degree score is below 0.5, the score will be invalid. If it is below 0.75, the submission will eventually be subject to human review.<br/>
-8) Refer to the baseline data for formatting requirements. Use a fixed generation seed of 42 when generating videos. Keep the frame rate same as the baseline.<br/>
+8) Refer to the baseline data for formatting requirements. Use a fixed generation seed of 42 when generating videos. Keep the frame rate and resolution same as the baseline.<br/>
 <br/>
 
 
